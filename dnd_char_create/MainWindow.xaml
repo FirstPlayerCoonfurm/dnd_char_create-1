@@ -1,0 +1,41 @@
+﻿<Window x:Class="dnd_char_create.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:dnd_char_create"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <ListView Name="charStats">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Str_start}">Str</GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Dex_start}">Dex</GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Con_start}">Con</GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Inte_start}">Inte</GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Wis_start}">Wis</GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Cha_start}">Cha</GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <ListView Name="raseView">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Name}">Name</GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Appearance}">Appearance</GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Str_bonus}">Str_bonus</GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Dex_bonus}">Dex_bonus</GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Con_bonus}">Con_bonus</GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Inte_bonus}">Inte_bonus</GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Wis_bonus}">Wis_bonus</GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Cha_bonus}">Cha_bonus</GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
