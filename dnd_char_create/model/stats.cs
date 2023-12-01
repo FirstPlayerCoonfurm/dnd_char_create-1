@@ -10,53 +10,53 @@ namespace dnd_char_create.model
 {
     public class stats:Notify
     {
-        public Rase Rase { get { return Rase; } set { } }
+        
+        private Rase rase;
+        public Rase Rase { get { return rase; } set { rase = value;OnPropertyChanged("Rase"); } }
+        private dndClass game_class;
+        public dndClass Game_class { get { return game_class; } set { game_class = value; OnPropertyChanged("Rase"); } }
+
+
         private int str_start;
         public int Str_start { get { return str_start; } set { str_start = value; OnPropertyChanged("Str_start"); } }
-        private int str;
-        public int Str { get { return str; } set { str = str_start + Rase.Str_bonus + value ; OnPropertyChanged("Str"); } }
-        private int str_dise;   
-        public int Str_dise { get { return str_dise; } set { str_dise = value; OnPropertyChanged("Str_dise"); } }
+        public int Str => rase.Str_bonus + str_start;
+        public int Str_dise => game_class.StrMain + (int)((Str-10) / 2);
+
 
 
         private int dex_start;
         public int Dex_start { get { return dex_start; } set { dex_start = value; OnPropertyChanged("Dex_start"); } }
-        private int dex;
-        public int Dex { get { return dex; } set { dex = value; OnPropertyChanged("Dex"); } }
-        private int dex_dise;
-        public int Dex_dise { get { return dex_dise; } set { dex_dise = value; OnPropertyChanged("Dex_dise"); } }
+        public int Dex => rase.Dex_bonus + dex_start;
+        public int Dex_dise => game_class.DexMain + (int)((Dex - 10) / 2);
+
 
 
         private int con_start;
         public int Con_start { get { return con_start; } set { con_start = value; OnPropertyChanged("Con_start"); } }
-        private int con;
-        public int Con { get { return con; } set { con = value; OnPropertyChanged("Con"); } }
-        private int con_dise;
-        public int Con_dise { get { return con_dise; } set { con_dise = value; OnPropertyChanged("Con_dise"); } }
+        public int Con => rase.Con_bonus + con_start;
+        public int Con_dise => game_class.ConMain + (int)((Con - 10) / 2);
+
 
 
         private int inte_start;
         public int Inte_start { get { return inte_start; } set { inte_start = value; OnPropertyChanged("Inte_start"); } }
-        private int inte;
-        public int Inte { get { return inte; } set { inte = value; OnPropertyChanged("Inte"); } }
-        private int inte_dise;
-        public int Inte_dise { get { return inte_dise; } set { inte_dise = value; OnPropertyChanged("Inte_dise"); } }
+        public int Inte => rase.Inte_bonus + inte_start;
+        public int Inte_dise => game_class.InteMain + (int)((Inte - 10) / 2);
+
 
 
         private int wis_start;
         public int Wis_start { get { return wis_start; } set { wis_start = value; OnPropertyChanged("Wis_start"); } }
-        private int wis;
-        public int Wis { get { return wis; } set { wis = value; OnPropertyChanged("Wis"); } }
-        private int wis_dise;
-        public int Wis_dise { get { return wis_dise; } set { wis_dise = value; OnPropertyChanged("Wis_dise"); } }
+        public int Wis => rase.Wis_bonus + wis_start;
+        public int Wis_dise => game_class.WisMain + (int)((Wis - 10) / 2);
+
 
 
         private int cha_start;
         public int Cha_start { get { return cha_start; } set { cha_start = value; OnPropertyChanged("Cha_start"); } }
-        private int cha;
-        public int Cha { get { return cha; } set { cha = value; OnPropertyChanged("Cha"); } }
-        private int cha_dise;
-        public int Cha_dise { get { return cha_dise; } set { cha_dise = value; OnPropertyChanged("Cha_dise"); } }
-        
+        public int Cha => rase.Cha_bonus + cha_start;
+        public int Cha_dise => game_class.ChaMain + (int)((Cha - 10) / 2);
+
+
     }
 }

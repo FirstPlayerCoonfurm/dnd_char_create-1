@@ -3,25 +3,31 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:dnd_char_create"
+        xmlns:local="clr-namespace:dnd_char_create" xmlns:model="clr-namespace:dnd_char_create.model" d:DataContext="{d:DesignInstance Type=model:start}"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <StackPanel>
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Vertical">
                 <ListView Name="charStats">
                     <ListView.View>
-                        <GridView>
-                            <GridViewColumn DisplayMemberBinding="{Binding Path=Str_start}">Str</GridViewColumn>
-                            <GridViewColumn DisplayMemberBinding="{Binding Path=Dex_start}">Dex</GridViewColumn>
-                            <GridViewColumn DisplayMemberBinding="{Binding Path=Con_start}">Con</GridViewColumn>
-                            <GridViewColumn DisplayMemberBinding="{Binding Path=Inte_start}">Inte</GridViewColumn>
-                            <GridViewColumn DisplayMemberBinding="{Binding Path=Wis_start}">Wis</GridViewColumn>
-                            <GridViewColumn DisplayMemberBinding="{Binding Path=Cha_start}">Cha</GridViewColumn>
+                        <GridView >
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Str}">Str</GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Str_dise}">Str_dise</GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Dex}">Dex</GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Dex_dise}">Dex_dise</GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Con}">Con</GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Con_dise}">Con_dise</GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Inte}">Inte</GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Inte_dise}">Inte_dise</GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Wis}">Wis</GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Wis_dise}">Wis_dise</GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Cha}">Cha</GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Cha_dise}">Cha_dise</GridViewColumn>
                         </GridView>
                     </ListView.View>
                 </ListView>
-                <ListView Name="raseView">
+                <ListView Name="raseView" SelectedItem="{Binding SelectedRase}">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn DisplayMemberBinding="{Binding Path=Name}">Name</GridViewColumn>
@@ -35,6 +41,21 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
+                <ListView Name="classView" SelectedItem="{Binding SelectedClass}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Name}">Name</GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=StrMain}">StrMain</GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=DexMain}">DexMain</GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=ConMain}">ConMain</GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=InteMain}">InteMain</GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=WisMain}">WisMain</GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=ChaMain}">ChaMain</GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <Button Height="30px" Width="auto" Content="Добавить книгу пользователю" Command="{Binding Rase_Chose}" HorizontalAlignment="Left" Click="Button_Click"/>
+
             </StackPanel>
         </StackPanel>
     </Grid>

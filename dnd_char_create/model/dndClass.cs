@@ -13,11 +13,27 @@ namespace dnd_char_create.model
         public int Id { get { return id; } set { id = value; OnPropertyChanged("Id"); } }
         private string name;
         public string Name { get { return name; } set { name = value; OnPropertyChanged("Name"); } }
-        private string mainStats1;
-        public string MainStats1{ get { return mainStats1; } set {mainStats1 = value; OnPropertyChanged("MainStats1"); } }
-        private string mainStats2;
-        public string MainStats2{ get { return mainStats2; } set {mainStats2 = value; OnPropertyChanged("MainStats2"); } }
-        private string skills;
-        public string Skills { get { return skills; } set { skills = value; OnPropertyChanged("skills"); } }
+        private int strMain;
+        public int StrMain { get { return strMain; } set { strMain = value; OnPropertyChanged("StrMain"); } }
+
+
+        private int dexMain;
+        public int DexMain { get { return dexMain; } set { dexMain = value; OnPropertyChanged("DexMain"); } }
+
+
+        private int conMain;
+        public int ConMain { get { return conMain; } set { conMain = value; OnPropertyChanged("ConMain"); } }
+
+
+        private int inteMain;
+        public int InteMain { get { return inteMain; } set { inteMain = value; OnPropertyChanged("InteMain"); } }
+
+
+        private int wisMain;
+        public int WisMain { get { return wisMain; } set { wisMain = value; OnPropertyChanged("WisMain"); } }
+
+
+        private int chaMain;
+        public int ChaMain { get { return chaMain; } set { chaMain = value; OnPropertyChanged("chaMain"); } }
     }
 }
