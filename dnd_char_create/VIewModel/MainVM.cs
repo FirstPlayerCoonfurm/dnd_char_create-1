@@ -192,15 +192,23 @@ namespace dnd_char_create.VIewModel
                                 }
                             }
                             if (check_t_f)
-                            {
-                                Character_make = new Character(Convert.ToInt32(Str_start_box), Convert.ToInt32(Dex_start_box), Convert.ToInt32(Con_start_box), Convert.ToInt32(Inte_start_box), Convert.ToInt32(Wis_start_box), Convert.ToInt32(Cha_start_box), SelectedRase, SelectedClass);
+                            { 
+                                if ((Convert.ToInt32(Dex_start_box) >=1) && (Convert.ToInt32(Con_start_box )>= 1) && (Convert.ToInt32(Inte_start_box) >= 1) && (Convert.ToInt32(Wis_start_box) >=1) && (Convert.ToInt32(Cha_start_box) >= 1) && (Convert.ToInt32(Str_start_box) >= 1)&&(Convert.ToInt32(Dex_start_box) <=20) && (Convert.ToInt32(Con_start_box) <=20) && (Convert.ToInt32(Inte_start_box) <= 20) && (Convert.ToInt32(Wis_start_box) <= 20) && (Convert.ToInt32(Cha_start_box) <= 20) && (Convert.ToInt32(Str_start_box) <= 20))
+                                    { 
+                                       Character_make = new Character(Convert.ToInt32(Str_start_box), Convert.ToInt32(Dex_start_box), Convert.ToInt32(Con_start_box), Convert.ToInt32(Inte_start_box), Convert.ToInt32(Wis_start_box), Convert.ToInt32(Cha_start_box), SelectedRase, SelectedClass);
 
-                                Char_Show ch = new Char_Show(Character_make);
-                                ch.Show();
+                                        Char_Show ch = new Char_Show(Character_make);
+                                        ch.Show(); 
+                                    }
+                                else
+                                {
+                                    MessageBox.Show("Введите значение от 1 до 20");
+
+                                }
                             }
                             else
                             {
-                                MessageBox.Show("Поля заполнены некорректно");
+                                MessageBox.Show("Введите значение от 1 до 20");
 
                             }
 
