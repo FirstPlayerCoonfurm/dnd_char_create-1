@@ -4,6 +4,7 @@ using dnd_char_create.model.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,18 +14,18 @@ namespace dnd_char_create.model
     {
         public stats stats;
 
-        public Character()
+        public Character(int str_start, int dex_start, int con_start, int inte_start, int wis_start, int cha_start, Rase rase, dndClass dndClass)
         {
             stats = new stats()
             {
-                Str_start = 15,
-                Dex_start = 10,
-                Con_start = 10,
-                Inte_start = 10,
-                Wis_start = 10,
-                Cha_start = 10,
-                Rase = Elf.elf,
-                Game_class = Bard.bard,
+                Str_start = str_start,
+                Dex_start = dex_start,
+                Con_start = con_start,
+                Inte_start = inte_start,
+                Wis_start = wis_start,
+                Cha_start = cha_start,
+                Rase = rase,
+                Game_class = dndClass,
             };
         }
     }

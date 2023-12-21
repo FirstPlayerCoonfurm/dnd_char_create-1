@@ -12,7 +12,7 @@ namespace dnd_char_create.dataContext.Rases
 
         public static Rase elf { get; set; } = new Rase()
         {
-            Id = 1,
+            Id = 2,
             Name = "Эльф",
             Appearance = "Долгоживущий гуманоид с длинными острыми ушами",
             Str_bonus = 0,

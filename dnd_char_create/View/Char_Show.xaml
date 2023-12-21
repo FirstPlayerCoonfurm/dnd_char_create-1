@@ -1,0 +1,151 @@
+﻿<Window x:Class="dnd_char_create.View.Char_Show"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:dnd_char_create.View" xmlns:viewmodel="clr-namespace:dnd_char_create.VIewModel" d:DataContext="{d:DesignInstance Type=viewmodel:MainVM}"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="420" Width="300" ResizeMode="NoResize">
+    <Window.Resources>
+        <!-- Стиль для ListView -->
+        <Style TargetType="ListView">
+            <Setter Property="Background" Value="#8a3333"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#FF2B2B"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Margin" Value="20"/>
+            <Setter Property="FontFamily" Value="Times New Roman"/>
+            <Style.Triggers>
+                <!-- Эффект при наведении -->
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#8a3333"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <!-- Стиль для GridViewColumnHeader -->
+        <Style TargetType="GridViewColumnHeader">
+            <Setter Property="Background" Value="#293133"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#FF2B2B"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="FontFamily" Value="Times New Roman"/>
+            <Style.Triggers>
+                <!-- Эффект при наведении -->
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#2A363B"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <!-- Стиль для кнопки -->
+        <Style TargetType="Button">
+            <Setter Property="BorderBrush" Value="White"/>
+            <Setter Property="Background" Value="#FF2B2B"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontFamily" Value="Times New Roman"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Window.Background>
+        <!-- Добавление фоновой картинки -->
+        <ImageBrush ImageSource="G:\dnd\dnd_char_create\ac2ea54e87f2d81783143d8b5c4e1e26.jpg"/>
+    </Window.Background>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            
+            <ListView Name="charStats">
+                <StackPanel Orientation="Horizontal">
+                    <Label  Content="{Binding Str_cha}"/>
+
+                    <Label ToolTip="Сила">Str</Label>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label  Content="{Binding Str_dise_cha}"/>
+
+                    <Label ToolTip="Бонус к броску проверки силы">StrDise</Label>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label   Content="{Binding Dex_cha}"/>
+
+                    <Label ToolTip="Ловкость">Dex</Label>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label  Content="{Binding Dex_dise_cha}"/>
+
+                    <Label ToolTip="Бонус к броску проверки ловкости">DexDise</Label>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label   Content="{Binding Con_cha}"/>
+
+                    <Label ToolTip="Телосложение">Con</Label>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label  Content="{Binding Con_dise_cha}"/>
+
+                    <Label ToolTip="Бонус к броску телосложения">ConDise</Label>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label   Content="{Binding Inte_cha}"/>
+
+                    <Label ToolTip="Интелект">Inte</Label>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label  Content="{Binding Inte_dise_cha}"/>
+
+                    <Label ToolTip="Бонус к броску проверки интелекта">InteDise</Label>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label   Content="{Binding Wis_cha}"/>
+
+                    <Label ToolTip="Мудрость">Wis</Label>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label  Content="{Binding Wis_dise_cha}"/>
+
+                    <Label ToolTip="Бонус к броску проверки мудрости">WisDise</Label>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label   Content="{Binding Cha_cha}"/>
+
+                    <Label ToolTip="Харизма">Cha</Label>
+
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label  Content="{Binding Cha_dise_cha}"/>
+
+                    <Label ToolTip="Бонус к броску проверки харизмы">ChaDise</Label>
+                </StackPanel>
+            </ListView>
+            <StackPanel Orientation="Vertical">
+                <ListView>
+                    <Label >Раса:</Label>
+                    <Label Content="{Binding Rase_cha}"></Label> 
+                </ListView>
+                <ListView>
+                    <Label>Класс:</Label>
+                    <Label Content="{Binding Class_cha}"></Label>
+
+                </ListView>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

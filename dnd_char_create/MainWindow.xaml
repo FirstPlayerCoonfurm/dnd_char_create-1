@@ -5,58 +5,141 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dnd_char_create" xmlns:model="clr-namespace:dnd_char_create.model" d:DataContext="{d:DesignInstance Type=model:start}"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <StackPanel>
-            <StackPanel Orientation="Vertical">
-                <ListView Name="charStats">
-                    <ListView.View>
-                        <GridView >
-                            <GridViewColumn DisplayMemberBinding="{Binding Path=Str}">Str</GridViewColumn>
-                            <GridViewColumn DisplayMemberBinding="{Binding Path=Str_dise}">Str_dise</GridViewColumn>
-                            <GridViewColumn DisplayMemberBinding="{Binding Path=Dex}">Dex</GridViewColumn>
-                            <GridViewColumn DisplayMemberBinding="{Binding Path=Dex_dise}">Dex_dise</GridViewColumn>
-                            <GridViewColumn DisplayMemberBinding="{Binding Path=Con}">Con</GridViewColumn>
-                            <GridViewColumn DisplayMemberBinding="{Binding Path=Con_dise}">Con_dise</GridViewColumn>
-                            <GridViewColumn DisplayMemberBinding="{Binding Path=Inte}">Inte</GridViewColumn>
-                            <GridViewColumn DisplayMemberBinding="{Binding Path=Inte_dise}">Inte_dise</GridViewColumn>
-                            <GridViewColumn DisplayMemberBinding="{Binding Path=Wis}">Wis</GridViewColumn>
-                            <GridViewColumn DisplayMemberBinding="{Binding Path=Wis_dise}">Wis_dise</GridViewColumn>
-                            <GridViewColumn DisplayMemberBinding="{Binding Path=Cha}">Cha</GridViewColumn>
-                            <GridViewColumn DisplayMemberBinding="{Binding Path=Cha_dise}">Cha_dise</GridViewColumn>
-                        </GridView>
-                    </ListView.View>
-                </ListView>
-                <ListView Name="raseView" SelectedItem="{Binding SelectedRase}">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn DisplayMemberBinding="{Binding Path=Name}">Name</GridViewColumn>
-                            <GridViewColumn DisplayMemberBinding="{Binding Path=Appearance}">Appearance</GridViewColumn>
-                            <GridViewColumn DisplayMemberBinding="{Binding Path=Str_bonus}">Str_bonus</GridViewColumn>
-                            <GridViewColumn DisplayMemberBinding="{Binding Path=Dex_bonus}">Dex_bonus</GridViewColumn>
-                            <GridViewColumn DisplayMemberBinding="{Binding Path=Con_bonus}">Con_bonus</GridViewColumn>
-                            <GridViewColumn DisplayMemberBinding="{Binding Path=Inte_bonus}">Inte_bonus</GridViewColumn>
-                            <GridViewColumn DisplayMemberBinding="{Binding Path=Wis_bonus}">Wis_bonus</GridViewColumn>
-                            <GridViewColumn DisplayMemberBinding="{Binding Path=Cha_bonus}">Cha_bonus</GridViewColumn>
-                        </GridView>
-                    </ListView.View>
-                </ListView>
-                <ListView Name="classView" SelectedItem="{Binding SelectedClass}">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn DisplayMemberBinding="{Binding Path=Name}">Name</GridViewColumn>
-                            <GridViewColumn DisplayMemberBinding="{Binding Path=StrMain}">StrMain</GridViewColumn>
-                            <GridViewColumn DisplayMemberBinding="{Binding Path=DexMain}">DexMain</GridViewColumn>
-                            <GridViewColumn DisplayMemberBinding="{Binding Path=ConMain}">ConMain</GridViewColumn>
-                            <GridViewColumn DisplayMemberBinding="{Binding Path=InteMain}">InteMain</GridViewColumn>
-                            <GridViewColumn DisplayMemberBinding="{Binding Path=WisMain}">WisMain</GridViewColumn>
-                            <GridViewColumn DisplayMemberBinding="{Binding Path=ChaMain}">ChaMain</GridViewColumn>
-                        </GridView>
-                    </ListView.View>
-                </ListView>
-                <Button Height="30px" Width="auto" Content="Добавить книгу пользователю" Command="{Binding Rase_Chose}" HorizontalAlignment="Left" Click="Button_Click"/>
+        Title="MainWindow" Height="650" Width="2000" ResizeMode="NoResize">
+    <Window.Resources>
+        <!-- Стиль для ListView -->
+        <Style TargetType="ListView">
+            <Setter Property="Background" Value="#1381bd"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#FF2B2B"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Margin" Value="20"/>
+            <Setter Property="FontFamily" Value="Times New Roman"/>
+            <Style.Triggers>
+                <!-- Эффект при наведении -->
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#1381bd"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <!-- Стиль для GridViewColumnHeader -->
+        <Style TargetType="GridViewColumnHeader">
+            <Setter Property="Background" Value="#293133"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#FF2B2B"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="FontFamily" Value="Times New Roman"/>
+            <Style.Triggers>
+                <!-- Эффект при наведении -->
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#2A363B"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <!-- Стиль для кнопки -->
+        <Style TargetType="Button">
+            <Setter Property="BorderBrush" Value="White"/>
+            <Setter Property="Background" Value="#FF2B2B"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontFamily" Value="Times New Roman"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Window.Background>
+        <!-- Добавление фоновой картинки -->
+        <ImageBrush ImageSource="G:\dnd\dnd_char_create\photo_5463410971784631679_w.jpg"/>
+    </Window.Background>
 
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+
+                <StackPanel Orientation="Vertical">
+                    <ListView Name="charStats">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox x:Name="str_start_box" Width="30" Text="{Binding Str_start_box}"></TextBox>
+                            <Label ToolTip="Сила">Str</Label>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox x:Name="dex_start_box" Width="30" Text="{Binding Dex_start_box}"></TextBox>
+                            <Label ToolTip="Ловкость">Dex</Label>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox x:Name="con_start_box" Width="30" Text="{Binding Con_start_box}"></TextBox>
+                            <Label ToolTip="Телосложение">Con</Label>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox x:Name="inte_start_box" Width="30" Text="{Binding Inte_start_box}"></TextBox>
+                            <Label ToolTip="Интелект">Inte</Label>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox x:Name="wis_start_box" Width="30" Text="{Binding Wis_start_box}"></TextBox>
+                            <Label ToolTip="Мудрость">Wis</Label>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox x:Name="cha_start_box" Width="30" Text="{Binding Cha_start_box}"></TextBox>
+                            <Label ToolTip="Харизма">Cha</Label>
+                        </StackPanel>
+                    </ListView>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <ListView Name="raseView" SelectedItem="{Binding SelectedRase}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Name}" >Name</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Appearance}">Appearance</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Str_bonus}">Str_bonus</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Dex_bonus}">Dex_bonus</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Con_bonus}">Con_bonus</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Inte_bonus}">Inte_bonus</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Wis_bonus}">Wis_bonus</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Cha_bonus}">Cha_bonus</GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <ListView Name="classView" SelectedItem="{Binding SelectedClass}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Name}">Name</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=StrMain}">Бросок силы</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=DexMain}">Бросок ловкости</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=ConMain}">Бросок телосложения</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=InteMain}">Бросок интелекта</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=WisMain}">Бросок мудрости</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=ChaMain}">Бросок харизмы</GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+
+                    </ListView>
+                </StackPanel>
             </StackPanel>
+            <ListView>
+            <TextBlock Text="{Binding Lab}"></TextBlock>
+            </ListView>
+            <Button Height="50px" Width="300" Content="Сгенерировать характеристики" Command="{Binding Stats_create}"  HorizontalAlignment="Left"/>
+            <Button Height="50px" Width="200" Content="Создать персонажа" Command="{Binding Char_create}" HorizontalAlignment="Left" />
+
+
+
         </StackPanel>
     </Grid>
 </Window>

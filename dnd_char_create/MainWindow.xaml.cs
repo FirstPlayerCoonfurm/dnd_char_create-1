@@ -16,30 +16,29 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using dnd_char_create.dataContext;
+using dnd_char_create.model.Base;
+using System.ComponentModel;
+using dnd_char_create.VIewModel;
+
 namespace dnd_char_create
 {
 
     public partial class MainWindow : Window
     {
+        MainVM mainVM = new MainVM();
         public MainWindow()
         {
             InitializeComponent();
-            raseView.ItemsSource = new List<Rase>() { Human.human ,Elf.elf};
-           
-            Character cha = new Character();
+            DataContext = mainVM;
+            raseView.ItemsSource = new List<Rase>() { Human.human ,Elf.elf, Dwarf.dwarf, Gearforged.gearforged, Halfling.halfling, Tabaxi.tabaxi, Tiefling.tiefling, Orc.orc};
 
-            charStats.ItemsSource = new List<stats>() { cha.stats };
-            classView.ItemsSource = new List<dndClass>() { Bard.bard };
+            //Character cha = new Character();
+            
+            classView.ItemsSource = new List<dndClass>() { Bard.bard, Barbarian.barbarian,Fighter.fighter, Wizard.wizard,Druid.druid,Cleric.cleric,Artificer.artificer,Warlock.warlock,Monk.monk,Paladin.paladin,Rogue.rogue,Ranger.ranger,Sorcerer.sorcerer};
         }
-        private Rase SelectedRase;
-        private dndClass SelectedClass;
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            if ((SelectedRase != null) && (SelectedClass != null))
-            {
-                MessageBox.Show("");
+        
+        
 
-            }
-        }
+        
     }
 }
