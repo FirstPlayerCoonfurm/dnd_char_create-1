@@ -28,6 +28,7 @@ namespace dnd_char_create
         MainVM mainVM = new MainVM();
         public MainWindow()
         {
+
             InitializeComponent();
             DataContext = mainVM;
             raseView.ItemsSource = new List<Rase>() { Human.human ,Elf.elf, Dwarf.dwarf, Gearforged.gearforged, Halfling.halfling, Tabaxi.tabaxi, Tiefling.tiefling, Orc.orc};
