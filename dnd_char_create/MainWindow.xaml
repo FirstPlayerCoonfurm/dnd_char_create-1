@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dnd_char_create" xmlns:model="clr-namespace:dnd_char_create.model" d:DataContext="{d:DesignInstance Type=model:start}"
         mc:Ignorable="d"
-        Title="MainWindow" Height="650" Width="2000" ResizeMode="NoResize">
+        Title="MainWindow" MinHeight="650" MinWidth="2000">
     <Window.Resources>
         <!-- Стиль для ListView -->
         <Style TargetType="ListView">
@@ -72,37 +72,42 @@
         </Grid.RowDefinitions>
         <StackPanel>
             <StackPanel Orientation="Horizontal">
-
                 <StackPanel Orientation="Vertical">
                     <ListView Name="charStats">
                         <StackPanel Orientation="Horizontal">
                             <TextBox x:Name="str_start_box" Width="30" Text="{Binding Str_start_box}"></TextBox>
-                            <Label ToolTip="Сила">Str</Label>
+                            <Label ToolTip="Сила" FontSize="16">Str</Label>
+                            <Button x:Name="strGen" Width="15" Height="15" Command="{Binding StrGena}"></Button>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <TextBox x:Name="dex_start_box" Width="30" Text="{Binding Dex_start_box}"></TextBox>
-                            <Label ToolTip="Ловкость">Dex</Label>
+                            <Label ToolTip="Ловкость" FontSize="16">Dex</Label>
+                            <Button x:Name="dexGen" Width="15" Height="15" Command="{Binding DexGena}"></Button>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <TextBox x:Name="con_start_box" Width="30" Text="{Binding Con_start_box}"></TextBox>
-                            <Label ToolTip="Телосложение">Con</Label>
+                            <Label ToolTip="Телосложение" FontSize="16">Con</Label>
+                            <Button x:Name="conGen" Width="15" Height="15" Command="{Binding ConGena}"></Button>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <TextBox x:Name="inte_start_box" Width="30" Text="{Binding Inte_start_box}"></TextBox>
-                            <Label ToolTip="Интелект">Inte</Label>
+                            <Label ToolTip="Интелект" FontSize="16">Inte</Label>
+                            <Button x:Name="inteGen" Width="15" Height="15" Command="{Binding InteGena}"></Button>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <TextBox x:Name="wis_start_box" Width="30" Text="{Binding Wis_start_box}"></TextBox>
-                            <Label ToolTip="Мудрость">Wis</Label>
+                            <Label ToolTip="Мудрость" FontSize="16">Wis</Label>
+                            <Button x:Name="wisGen" Width="15" Height="15" Command="{Binding WisGena}"></Button>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <TextBox x:Name="cha_start_box" Width="30" Text="{Binding Cha_start_box}"></TextBox>
-                            <Label ToolTip="Харизма">Cha</Label>
+                            <Label ToolTip="Харизма" FontSize="16">Cha</Label>
+                            <Button x:Name="chaGen" Width="15" Height="15" Command="{Binding ChaGena}"></Button>
                         </StackPanel>
                     </ListView>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <ListView Name="raseView" SelectedItem="{Binding SelectedRase}">
+                    <ListView Name="raseView" SelectedItem="{Binding SelectedRase}" FontSize="16">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn DisplayMemberBinding="{Binding Path=Name}" >Name</GridViewColumn>
@@ -116,10 +121,10 @@
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <ListView Name="classView" SelectedItem="{Binding SelectedClass}">
+                    <ListView Name="classView" SelectedItem="{Binding SelectedClass}" FontSize="16">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn DisplayMemberBinding="{Binding Path=Name}">Name</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Name}" >Name</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding Path=StrMain}">Бросок силы</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding Path=DexMain}">Бросок ловкости</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding Path=ConMain}">Бросок телосложения</GridViewColumn>
@@ -132,14 +137,95 @@
                     </ListView>
                 </StackPanel>
             </StackPanel>
-            <ListView>
-            <TextBlock Text="{Binding Lab}"></TextBlock>
-            </ListView>
-            <Button Height="50px" Width="300" Content="Сгенерировать характеристики" Command="{Binding Stats_create}"  HorizontalAlignment="Left"/>
-            <Button Height="50px" Width="200" Content="Создать персонажа" Command="{Binding Char_create}" HorizontalAlignment="Left" />
+            <StackPanel Orientation="Horizontal">
+                <Button Height="50px" Width="200" Content="Создать персонажа" Command="{Binding Char_create}" HorizontalAlignment="Left" />
+                <ListView x:Name="charStats2" Width="284" HorizontalAlignment="Left" >
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label  Content="{Binding Str_cha}" FontSize="16"/>
 
+                                <Label ToolTip="Сила" Content="Str" FontSize="16"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label  Content="{Binding Str_dise_cha}" FontSize="16"/>
 
+                                <Label ToolTip="Бонус к броску проверки силы" Content="StrDise" FontSize="16"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label   Content="{Binding Dex_cha}" FontSize="16"/>
 
+                                <Label ToolTip="Ловкость" Content="Dex" FontSize="16"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label  Content="{Binding Dex_dise_cha}" FontSize="16"/>
+
+                                <Label ToolTip="Бонус к броску проверки ловкости" Content="DexDise" FontSize="16"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label   Content="{Binding Con_cha}" FontSize="16"/>
+
+                                <Label ToolTip="Телосложение" Content="Con" FontSize="16"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label  Content="{Binding Con_dise_cha}" FontSize="16"/>
+
+                                <Label ToolTip="Бонус к броску телосложения" Content="ConDise" FontSize="16"/>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label   Content="{Binding Inte_cha}" FontSize="16"/>
+
+                                <Label ToolTip="Интелект" Content="Inte" FontSize="16"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label  Content="{Binding Inte_dise_cha}" FontSize="16"/>
+
+                                <Label ToolTip="Бонус к броску проверки интелекта" Content="InteDise" FontSize="16"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label   Content="{Binding Wis_cha}" FontSize="16"/>
+
+                                <Label ToolTip="Мудрость" Content="Wis" FontSize="16"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label  Content="{Binding Wis_dise_cha}" FontSize="16"/>
+
+                                <Label ToolTip="Бонус к броску проверки мудрости" Content="WisDise" FontSize="16"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label   Content="{Binding Cha_cha}" FontSize="16"/>
+
+                                <Label ToolTip="Харизма" Content="Cha" FontSize="16"/>
+
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label  Content="{Binding Cha_dise_cha}" FontSize="16"/>
+
+                                <Label ToolTip="Бонус к броску проверки харизмы" Content="ChaDise" FontSize="16"/>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Grid.Row="2">
+                            <ListView>
+                                <Label Content="Раса:" />
+                                <Label Content="{Binding Rase_cha}" FontSize="16"/>
+                            </ListView>
+                            <ListView>
+                                <Label Content="Класс:"/>
+                                <Label Content="{Binding Class_cha}" FontSize="16"/>
+
+                            </ListView>
+
+                        </StackPanel>
+                    </StackPanel>
+
+                </ListView>
+            </StackPanel>
         </StackPanel>
+
+        
+        
+
     </Grid>
 </Window>
